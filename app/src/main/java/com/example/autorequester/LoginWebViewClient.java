@@ -202,7 +202,8 @@ public class LoginWebViewClient extends WebViewClient {
     public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
         WebResourceResponse response = super.shouldInterceptRequest(view, request);
 //        https://service.bupt.edu.cn/site/process/my-todo?status=0&p=1&page_size=1
-        if (request.getUrl().toString().equals("https://service.bupt.edu.cn/v2/matter/m_launch?type=1")) {
+        if (request.getUrl().toString().equals("https://service.bupt.edu.cn/site/process/inst-list?status=1&p=1&starter_depart_id=181789")) {
+            Toast.makeText(loginActivity, "申请成功！", Toast.LENGTH_LONG);
             loginActivity.finish();
         }
         return response;
@@ -292,4 +293,5 @@ public class LoginWebViewClient extends WebViewClient {
 //            }
 //        });
 //    }
+
 }
