@@ -1,5 +1,6 @@
 package com.example.autorequester;
 
+import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 import android.webkit.WebResourceRequest;
@@ -101,11 +102,11 @@ public class LoginWebViewClient extends WebViewClient {
                             + "document.getElementsByClassName(\"li-style\")[0].dispatchEvent(evt);");
 
                     //选择外出时间
-                    runJs("var evtf = document.createEvent(\"HTMLEvents\");evtf.initEvent(\"focus\", true, false);document.getElementsByClassName(\"el-input__inner\")[1].dispatchEvent(evtf);");
+                    runJs("var evtf = document.createEvent(\"HTMLEvents\");evtf.initEvent(\"focus\", true, false);document.getElementsByClassName(\"el-input__inner\")[2].dispatchEvent(evtf);");
                     runJs("document.getElementsByClassName(\"el-time-panel__btn confirm\")[0].click();");
 
                     //选择返校时间
-                    runJs("var evtf = document.createEvent(\"HTMLEvents\");evtf.initEvent(\"focus\", true, false);document.getElementsByClassName(\"el-input__inner\")[2].dispatchEvent(evtf);");
+                    runJs("var evtf = document.createEvent(\"HTMLEvents\");evtf.initEvent(\"focus\", true, false);document.getElementsByClassName(\"el-input__inner\")[3].dispatchEvent(evtf);");
                     runJs("document.getElementsByClassName(\"el-time-spinner__item\")[167].click();");
                     runJs("document.getElementsByClassName(\"el-time-spinner__item\")[227].click();");
                     runJs("document.getElementsByClassName(\"el-time-spinner__item\")[287].click();");
@@ -203,95 +204,10 @@ public class LoginWebViewClient extends WebViewClient {
         WebResourceResponse response = super.shouldInterceptRequest(view, request);
 //        https://service.bupt.edu.cn/site/process/my-todo?status=0&p=1&page_size=1
         if (request.getUrl().toString().equals("https://service.bupt.edu.cn/site/process/inst-list?status=1&p=1&starter_depart_id=181789")) {
-            Toast.makeText(loginActivity, "申请成功！", Toast.LENGTH_LONG);
+            Toast.makeText(this.loginActivity, "申请成功！", Toast.LENGTH_LONG);
             loginActivity.finish();
         }
         return response;
     }
-
-//    public void postForm(String url) throws JSONException {
-//        OkHttpClient okHttpClient = new OkHttpClient();
-//        JSONObject jsonObject1 = new JSONObject();
-//        try {
-//            jsonObject1.put("name", "西土城校区")
-//                    .put("value", "2")
-//                    .put("default", 0)
-//                    .put("imgdata", "");
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        JSONObject jsonObject2 = new JSONObject();
-//        try {
-//            jsonObject2.put("uid", 197746)
-//                    .put("name", "吕佳蔚")
-//                    .put("number", "2020118020");
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        JSONObject jsonObject3 = new JSONObject();
-//        try {
-//            jsonObject3.put("value", "1")
-//                    .put("name", "本人已阅读并承诺");
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        JSONObject jsonObject = new JSONObject();
-//        try {
-//            jsonObject.put("User_5", "崔浩然")
-//                    .put("User_7", "2020141050")
-//                    .put("User_9", "计算机学院（国家示范性软件学院）")
-//                    .put("User_11", "18810778521")
-//                    .put("SelectV2_58", new JSONObject[]{jsonObject1})
-//                    .put("UserSearch_60", jsonObject2)
-//                    .put("Calendar_62", "2021-09-02T15:28:57+08:00")
-//                    .put("Calendar_50", "2021-09-02T07:35:34.000Z")
-//                    .put("Calendar_47", "2021-09-02T07:37:25.000Z")
-//                    .put("Input_28", "东信北邮")
-//                    .put("MultiInput_30", "校外科研")
-//                    .put("Radio_52", jsonObject3)
-//                    .put("Validate_63", "")
-//                    .put("Alert_65", "")
-//                    .put("Validate_66", "")
-//                    .put("Alert_67", "");
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        JSONObject jsonObject4 = new JSONObject();
-//        jsonObject4.put("1716", jsonObject);
-//        JSONObject jsonObject5 = new JSONObject();
-//        jsonObject5.put("app_id", "578")
-//                .put("form_data", jsonObject4);
-//
-//        Log.d("CHR", "postForm: " + String.valueOf(jsonObject5));
-//
-//        RequestBody requestBody = FormBody.create(MediaType.parse("application/json; charset=utf-8")
-//                , String.valueOf(jsonObject5));
-////        RequestBody requestBody = new FormBody.Builder()
-////                .add("data", String.valueOf(jsonObject))
-////                .build();
-//
-//        Request request = new Request.Builder()
-//                .url(url)
-//                .post(requestBody)
-//                .build();
-//
-//        okHttpClient.newCall(request).enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                Log.d("CHR", "onFailure: " + e.getMessage());
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                Log.d("CHR", response.protocol() + " " + response.code() + " " + response.message());
-//                Headers headers = response.headers();
-//                for (int i = 0; i < headers.size(); i++) {
-//                    Log.d("CHR", headers.name(i) + ":" + headers.value(i));
-//                }
-//                Log.d("CHR", "onResponse: " + response.body().string());
-//            }
-//        });
-//    }
 
 }
