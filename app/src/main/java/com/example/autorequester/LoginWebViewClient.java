@@ -101,6 +101,10 @@ public class LoginWebViewClient extends WebViewClient {
                             + "evt.initEvent(\"click\", true, false);"
                             + "document.getElementsByClassName(\"li-style\")[0].dispatchEvent(evt);");
 
+                    runJs("var evtf = document.createEvent(\"HTMLEvents\");evtf.initEvent(\"focus\", true, false);document.getElementsByClassName(\"el-input__inner\")[1].dispatchEvent(evtf);");
+                    sleep(500);
+                    runJs("document.getElementsByClassName(\"available today\")[0].click();");
+
                     //选择外出时间
                     runJs("var evtf = document.createEvent(\"HTMLEvents\");evtf.initEvent(\"focus\", true, false);document.getElementsByClassName(\"el-input__inner\")[2].dispatchEvent(evtf);");
                     runJs("document.getElementsByClassName(\"el-time-panel__btn confirm\")[0].click();");
